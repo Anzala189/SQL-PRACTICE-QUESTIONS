@@ -1,0 +1,60 @@
+-- Day 2 : Find the employees with salary more than their manager salary
+
+-- Script 2 :
+CREATE DATABASE employeemanagersalary; 
+CREATE TABLE EMP(EMP_ID INT PRIMARY KEY,EMP_NAME VARCHAR(10),SALARY INT ,MANAGER_ID INT);
+INSERT INTO EMP VALUES(1,'ANKIT',10000,4);
+INSERT INTO EMP VALUES(2,'MOHIT',15000,5);
+INSERT INTO EMP VALUES(3,'VIKAS',10000,4);
+INSERT INTO EMP VALUES(4,'ROHIT',5000,2);
+INSERT INTO EMP VALUES(5,'MUDIT',12000,6);
+INSERT INTO EMP VALUES(6,'AGAM',12000,2);
+INSERT INTO EMP VALUES(7,'SANJAY',9000,2);
+INSERT INTO EMP VALUES(8,'ASHISH',5000,2);
+SELECT*FROM EMP;
+
+-- Find names of managers
+SELECT E.emp_name AS EMPLOYEES,
+M.emp_name AS Managers
+FROM emp E JOIN emp M
+ON E.manager_id=M.emp_id;
+
+-- Find out manager salary and employees salary
+SELECT e.emp_name AS Employees, e.salary AS Employee_Salary, m.emp_name AS Manager, m.salary AS manager_salary
+FROM emp e JOIN emp m
+ON e.manager_id=m.emp_Id
+ORDER BY Manager_salary DESC;
+
+-- Find the employees with salary more than their manager salary
+SELECT E.EMP_ID, E.EMP_NAME, M.EMP_NAME AS MANAGER_NAME, E.SALARY, M.SALARY AS "MANAGER SALARY"
+FROM EMP E INNER JOIN EMP M ON M.EMP_ID = E.MANAGER_ID 
+WHERE E.SALARY > M.SALARY
+ORDER BY E.EMP_NAME ASC;
+
+-- TELL ME THE MANAGER AND HOW MANY EMPLOYEES WORKED UNDER HIM
+
+SELECT m.emp_name AS manager_name,SUM(e.salary) AS employee_salary, SUM(m.salary) AS manager_salary,
+COUNT(e.emp_id) AS total_employees
+FROM emp e JOIN emp m ON e.manager_id = m.emp_id
+GROUP BY m.emp_id, m.salary,m.emp_name;
+
+
+-- Tell me all employees, manager names, manager salary ,num of employees under each team, salary of team.
+-- emp e= employees, emp m for managers, emp e2 for employees under managers
+
+SELECT e.emp_name AS Employees,
+m.emp_name AS Managers,
+COUNT(E2.emp_id) AS NUM_OF_EMPLOYEES_UNDER_MANAGER,
+SUM(E2.salary) AS Total_salary
+FROM emp e 
+LEFT JOIN emp m
+ON e.manager_id=m.emp_id
+LEFT JOIN emp e2
+ON m.emp_id=e2.manager_id
+GROUP BY e.emp_id, e.emp_name, m.emp_id, m.manager_id
+ORDER BY total_salary DESC;
+
+
+
+
+
