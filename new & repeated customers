@@ -21,12 +21,29 @@ GROUP BY co.order_date
 order by co.order_date
 LIMIT 100;
 
-FIND OUT ORDERS PER CUSTOMERS:
+QUESTION: FIND OUT ORDERS PER CUSTOMERS:
 -- Count Orders Per Customer
 SELECT*FROM customer_orders;
 SELECT customer_id,COUNT(customer_Id) AS num_of_orders FROM customer_orders
 GROUP BY customer_id
 ORDER BY customer_Id ASC;
+
+
+QUESTION: FIND OUT FIRST ORDER DATE FOR EACH CUSTOMER:
+-- first Order Date Per Customer
+SELECT customer_id, MIN(order_date) AS First_order_date
+from customer_orders
+GROUP BY Customer_id
+ORDER BY Customer_id;
+
+
+
+
+
+
+
+
+
 
 
 
