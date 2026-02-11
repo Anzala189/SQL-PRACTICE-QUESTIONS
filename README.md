@@ -35,7 +35,7 @@ SELECT customer_id,COUNT(customer_Id) AS num_of_orders FROM customer_orders
 GROUP BY customer_id
 ORDER BY customer_Id ASC;
 
-![image] (https://github.com/Anzala189/SQL-PRACTICE-QUESTIONS/blob/09a88529b956b4ba8e681862a4171453a767dc07/customers.png)
+![image](https://github.com/Anzala189/SQL-PRACTICE-QUESTIONS/blob/09a88529b956b4ba8e681862a4171453a767dc07/customers.png)
 
 
 
