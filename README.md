@@ -40,6 +40,7 @@ ORDER BY customer_Id ASC;
 QUESTION: FIND FIRST ORDER DATE PER CUSTOMER:
 
 -- first Order Date Per Customer
+
 SELECT customer_id, MIN(order_date) AS First_order_date
 from customer_orders
 GROUP BY Customer_id
