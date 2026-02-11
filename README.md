@@ -8,6 +8,9 @@ USE new_repeated_customers;
 SELECT*FROM customer_orders;
 -- For new customers: First_time: co.Order_date= MIN(order_date)
 -- For repeated customers : co.order_date!= Min(order_date) = repeated
+
+SOLUTION:
+
 WITH First_time AS(
 SELECT customer_id, MIN(order_date) AS First_time_order_dates
 FROM customer_orders
