@@ -37,5 +37,14 @@ ORDER BY customer_Id ASC;
 
 ![image](https://github.com/Anzala189/SQL-PRACTICE-QUESTIONS/blob/09a88529b956b4ba8e681862a4171453a767dc07/customers.png)
 
+QUESTION: FIND FIRST ORDER DATE PER CUSTOMER:
+
+-- first Order Date Per Customer
+SELECT customer_id, MIN(order_date) AS First_order_date
+from customer_orders
+GROUP BY Customer_id
+ORDER BY Customer_id;
+
+![image](https://github.com/Anzala189/SQL-PRACTICE-QUESTIONS/blob/8b5835e2d2cb14b8c28c11cf1dd53ac8f9a5969b/first_visit_date.png)
 
 
